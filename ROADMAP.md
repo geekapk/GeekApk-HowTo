@@ -3,6 +3,17 @@
 > 这里描述了 GeekApk 每个阶段应该带有的特性。
 
 ## 阶段0: 基础实现 `Android Client` 和 `Server`
+### 涉及到的项目
++ [GeekServer](https://github.com/duangsuse/GeekServer) 实现部分 API
++ [GeekClient](https://github.com/duangsuse/GeekClient) 相应的实现 API 编程借口
++ [GeekMarket](https://github.com/duangsuse/GeekMarket) 基础的UI和相关功能实现
+
+### GeekServer
++ 用户除了 BlackList 以外操作 
+### GeekClient
++
+### GeekMarket
++
 
 ## 阶段1: 成品包装和更多的 `API`
 
