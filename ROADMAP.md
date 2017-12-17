@@ -10,10 +10,18 @@
 
 ### GeekServer
 + 用户除了 BlackList 以外操作 
++ 评论所有操作
++ 收件箱实现
++ 星标, follow, rate API 实现
++ 新闻 API 实现
++ 应用， 分类 API 实现
 ### GeekClient
-+
+> 实现相应 WebAPI 接口 
+
 ### GeekMarket
-+
++ 主屏幕
++ 用户/应用/新闻/分类/收件箱 界面
++ 特殊应用 _（充当动态，发现的）_ 的特殊界面
 
 ## 阶段1: 成品包装和更多的 `API`
 
