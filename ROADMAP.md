@@ -5,16 +5,16 @@
 ## 阶段0: 基础实现 `Android Client` 和 `Server`
 ### 涉及到的项目
 + [GeekServer](https://github.com/duangsuse/GeekServer) 实现部分 API
-+ [GeekClient](https://github.com/duangsuse/GeekClient) 相应的实现 API 编程借口
++ [GeekClient](https://github.com/duangsuse/GeekClient) 相应的实现 API 编程接口
 + [GeekMarket](https://github.com/duangsuse/GeekMarket) 基础的UI和相关功能实现
 
 ### GeekServer
-+ 用户除了 BlackList 以外操作 
-+ 评论所有操作
-+ 收件箱实现
-+ 星标, follow, rate API 实现
-+ 新闻 API 实现
-+ 应用， 分类 API 实现
++ __用户__ 除了 _BlackList_ 以外操作
++ __评论__ 所有操作
++ __收件箱__ 实现
++ __星标, follow, rate__ API 实现
++ __新闻__ API 实现
++ __应用， 分类__ API 实现
 ### GeekClient
 > 实现相应 WebAPI 接口 
 
@@ -22,6 +22,7 @@
 + 主屏幕
 + 用户/应用/新闻/分类/收件箱 界面
 + 特殊应用 _（充当动态，发现的）_ 的特殊界面
++ 注册相应 _URI_ 和标准应用市场的 Intent
 
 ## 阶段1: 成品包装和更多的 `API`
 
