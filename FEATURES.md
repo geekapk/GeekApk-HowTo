@@ -1,18 +1,7 @@
 > 这部分描述了 GeekApk 不同部分的设计特性
 
 ## API
-> 普通 _HTTP_ WebAPI
-
-### 大体功能
-+ 用户， 包含 ID, 用户名, 邮箱, bio, Github/Gitlab ID, Hash, 创建时间和上线时间， 屏蔽用户
-+ 
-
-### 操作
-#### 用户
-##### Create
-##### Read
-##### Update
-##### Delete
+> 普通 _HTTP_ WebAPI, 请求地址使用 __URI__ 标准
 
 ## API 客户端
 ### Java
@@ -35,9 +24,6 @@
 + Hook 函数没有任何参数, 每次执行脚本时都先清空解释器, 需要的信息用 set(Object) 放置
 + 所有 Hook 默认异步， 调用 __send__ 函数在主线程上进行UI操作. Hook 可以同步， 同步在钩子函数名后添加 __Async__
 + BeanShell 解释器在 __GeekExt__ 初始化时被初始化， 每个 Worker 都是一个 Interpreter, 采用一个解释器一个线程。 当执行线程结束，Worker 回到空闲列表。主线程使用 Handler 接受消息
-
-### Hooks
-+ 
 
 ## 开发者文档
 ### GeekApk-APIDoc
@@ -70,4 +56,15 @@
 + Sponsors 赞助着页面
 + About 故事
 
+### 额外服务
++ __web.geekapk.com__ Web 客户端
++ __wiki.geekapk.com__ App Wiki
++ __lab.geekapk.com__ (Gitlab) App Lab, 提供 CI 服务
++ *IRC 服务*
++ __pic.geekapk.com__ 图床服务
++ __geekapk.com__ 主页
++ __geekapk.com/dev__ 开发者资源
++ __piwik.geekapk.com__ 统计系统（政治正确化）
+
 ### Web
+> 实现 Android 版本的所有功能，纯静态，采用质感设计。
