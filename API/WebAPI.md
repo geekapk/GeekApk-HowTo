@@ -14,8 +14,17 @@
 ### 操作
 #### 用户
 ##### Create
-+ Create 
++ 使用 GitHub/GitLab 的 Gist 验证 创建用户: name, initial hash(客户端根据密码生成), gist id, auth
+> 如果 gist 上的 auth hash 后与 auth 匹配，则验证通过
+
 ##### Read
+###### By UID
++ username
++ mail
++ bio
++ github/gitlab ID
++ ctime/atime
+
 ##### Update
 ##### Delete
 
