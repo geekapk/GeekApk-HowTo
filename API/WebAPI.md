@@ -25,8 +25,23 @@
 + github/gitlab ID
 + ctime/atime
 
-##### Update
+###### Gets UID/ UID list
++ username _(WC)_
++ mail/mail domain _(WC)_
++ bio _(WC)_
++ github/gitlab ID
++ ctime/atime range
+
+##### Update _(Auth needed)_
++ username
++ mail
++ bio
++ Github/Gitlab ID _(Gist auth needed)_
++ Hash _(Gist auth needed)_
++ ctime
+
 ##### Delete
++ delete user _(Auth needed) (Gist auth needed) (limited)_
 
 #### 评论
 ##### Create
