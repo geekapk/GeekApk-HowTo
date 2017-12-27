@@ -32,4 +32,5 @@ GeekApk 使用 __HTTP API__ 来向服务器请求进行相应操作，大部分�
 
 ### 删除用户
 > 限制删除用户主要是为了防止利用一个 Github/Gitlab account 在被 ban 后利用删除机制破除限制继续进行 Spam
+
 一个用户帐号 __必须__ 存活 _3d_ 以上才能进行删除, 在此期间注册的 Github/Gitlab account 不能被用来创建其它用户
