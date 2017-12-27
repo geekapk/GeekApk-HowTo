@@ -6,7 +6,7 @@
 + 评论，uid id t`(arget)`id text reply`(to id)` edited? time
 + 收件箱，uid tid id time optr`(操作人)`
 + Star，uid tid id time
-+ Rate，uid tid level`(0-9)`
++ Rate，uid appid level`(0-9)`
 + 新闻，uid id text optr time
 + 应用，uid id title`(梗概)` name class`(分类)` news`(what's new?)` desc`(ription)` license shots`(screenshots)(Other Table)` blame`(点评)` count icon dl`(链接)` ver`(sion)` time
 + 分类，id name desc super`(category ID)`
@@ -65,7 +65,7 @@ t_user|被 `block` 的用户 ID, `0.0.1` 中暂时不实现这个特性
 
 name|desc
 :--|:--
-uid|用户 ID
+uid|评论者用户 ID
 id|reply ID
 tid|目标 ID, 用于区分目标。TID 一般为应用的 ID, 但是有一些预留的 TID 用于指定没有回复评论功能的一些评论目标(比如 news), 这种情况下 `reply ID` 就是相应目标的 ID
 reply|回复目标，一般是一个 _reply_ 的 _ID_, 但在特殊 _TID_ 时这个字段用于指示特殊目标的 ID
@@ -84,18 +84,47 @@ time|创建时间, 一般也用于按时间排序模式
 ##### Delete
 
 #### 收件箱
+> post|uid tid id time optr
+
+name|desc
+:--|:--
+uid|收件用户 ID
+tid|目标 ID
+id|配合 `tid` 用于明确指示目标
+time|发送时间
+optr|操作人, 必须是有效 `uid`
+
 ##### Create
 ##### Read
 ##### Update
 ##### Delete
 
 #### Star
+> star|uid tid id time
+
+name|desc
+:--|:--
+uid|操作用户 ID
+tid|目标 ID
+id|配合 `tid` 用于明确指示目标
+time|操作时间
+
 ##### Create
 ##### Read
 ##### Update
 ##### Delete
 
 #### Rate
+> rate|uid appid level
+
+name|desc
+:--|:--
+uid|操作用户 ID
+appid|应用 ID
+level|打分
+
+> 目前的设计是只允许给应用打分，如果觉得不妥请开 [issue](https://github.com/duangsuse/GeekApk-HowTo/issues) 讨论
+
 ##### Create
 ##### Read
 ##### Update
@@ -118,3 +147,15 @@ time|创建时间, 一般也用于按时间排序模式
 ##### Read
 ##### Update
 ##### Delete
+
+#### 特殊 ID
+> 这是内部硬点的保留 ID 列表，用于在不同的表中表示特殊意义，只和 API 版本有关
+
+id|desc
+:--|:--
+0|
+1|
+2|
+3|
+4|
+5|
