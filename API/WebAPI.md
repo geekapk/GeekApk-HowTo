@@ -1,38 +1,39 @@
 # GeekApk WebAPI
 > Version 0.0.1 第一个 API 设计协定
 
-### 大体功能|数据存储
-+ 用户， 包含 ID, 用户名, 邮箱, bio, Github/Gitlab ID, Hash, 创建时间和上线时间， 屏蔽用户
-+ 评论，uid id t`(arget)`id text reply`(to id)` edited? time
-+ 收件箱，uid tid id time optr`(操作人)`
-+ Star，uid tid id time
-+ Rate，uid appid level`(0-9)`
-+ 新闻，uid id text optr time
-+ 应用，uid id title`(梗概)` name class`(分类)` news`(what's new?)` desc`(ription)` license shots`(screenshots)(Other Table)` blame`(点评)` count icon dl`(链接)` ver`(sion)` time
-+ 分类，id name desc super`(category ID)`
+### 数据存储与交互
+- User - 存储用户个人信息，提供用户信息和认证接口
+- Topic - 存在讨论区功能的数据对象
+- App extends Topic - 应用
+- Article extends Topic - 用户发表的文章
+- AppCategory extends Topic - 应用类别
+- Discussion - （讨论区）讨论内容项
+- Rating - （讨论区）用户评分记录
+- Favorite - 用户收藏的应用
 
-### 操作
-#### 用户
-> user|uid name mail bio ghid glid hash ctime atime
+### 数据对象
+#### User
 
-> user_block|uid t_user
+##### 存储
 
-|name|desc|
-:--|:--
-uid|用户 `ID`, 从 _0_ 开始计数， 每新建一个用户 `last_id` 表中的特殊 uid 记录的值自增
-name|用户名, 最大长度 _30_ 个字符
-mail|邮箱, 不进行验证, 最大长度 _90_ 个字符 _(对内部没有必要正确, 但必须符合 user '@' host 格式)_
-bio|用户的自我介绍, 最长 _900_ 个字符
-ghid|GitHub ID, 必须正确设置或者为空 
-glid|GitLab ID, 必须正确设置或者为空, 和 `ghid` 必须有一项不为空
-hash|验证身份时比较的 Hash 数值, 为用户密码的 sha-256 Hash
-ctime|用户创建时间
-atime|用户上线时间 (客户端自动更新)
-t_user|被 `block` 的用户 ID, `0.0.1` 中暂时不实现这个特性
+表: users
 
-##### Create
-+ 使用 GitHub/GitLab 的 Gist 验证 创建用户: name, initial hash(客户端根据密码生成), gist id, auth
-> 如果 gist 上的 auth hash 后与 auth 匹配，则验证通过
+名称| 类型 | 是否必需 | 描述
+:--|:--|:--|:--
+id | char(36) | required | 用户 UUID. 由 OneIdentity 提供.
+name | varchar(256) | required | 用户名. 由 OneIdentity 提供.
+display_name | varchar(256) | required | Profile 等位置显示的用户名称. 首次登录时设置.
+mail | varchar(256) | optional | 邮件地址.
+bio | text | optional | 自我介绍, 最长 _900_ 个字符.
+create_time | bigint | required | 首次登录时间.
+
+##### 登录流程
+1. 客户端通过 OneIdentity 基本身份认证流程获得 Basic Identity Token.
+2. 客户端向 GeekAPK 服务器提交 Basic Identity Token.
+3. 服务器对客户端提交的 Token 进行验证，并获取用户的基本信息. 生成并下发 GeekAPK Access Token 和账户状态.
+4. 客户端保存 GeekAPK Access Token, 并检查账户状态。如果账户已经完成 GeekAPK 个人信息初始化，则重定向至登录前的页面或个人信息页；否则，引导用户完成个人信息初始化。
+
+---
 
 ##### Read
 ###### By UID
